@@ -27,11 +27,10 @@ public class HikariCPTests {
 	public void test() { 	
 			try {
 				Connection conn = ds.getConnection();
-				log.info("!!!!!!!!!!!!!" + conn);
+				log.info("conn's obj" + conn);
 				
 			
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				log.error(e.getMessage());
 			}
 			

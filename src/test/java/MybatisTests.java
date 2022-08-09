@@ -25,12 +25,16 @@ public class MybatisTests {
 
 	@Test
 	public void test() {
+		try {
 		SqlSession dbs = ssf.openSession();
 		Connection conn = dbs.getConnection();
 		log.info("Conn's obj : " + conn);
-	}
+	}catch(Exception e) {
+		
+		log.error(e.getMessage());
+		}
 	
-
+	}
 }
 
 
