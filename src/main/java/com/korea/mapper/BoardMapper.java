@@ -19,10 +19,10 @@ public interface BoardMapper {
 
 	Class<?> Integer = null;
 
-	@Select("select * from tbl_board where bno>0")
+	@Select("select * from tbl_board2 where bno>0")
 	public List<BoardVO> getList();
 	@Insert
-	("insert into tbl_board(bno,title,content,writer) values(seq_board.nextval, #{title},#{content},#{writer})")
+	("insert into tbl_board2(bno,title,content,writer) values(seq_board.nextval, #{title},#{content},#{writer})")
 	public void insert(BoardVO board);
 	@SelectKey
 	(
@@ -32,15 +32,19 @@ public interface BoardMapper {
 			resultType=long.class
 	)
 	@Insert
-	("insert into tbl_board(bno,title,content,writer) values(seq_board.nextval, #{title},#{content},#{writer})")
+	("insert into tbl_board2(bno,title,content,writer) values(seq_board.nextval, #{title},#{content},#{writer})")
 	public long insertSelectKey(BoardVO board);	
-	@Select("select * from tbl_board where bno=#{bno}")
+	
+	@Select("select * from tbl_board2 where bno=#{bno}")
 	public BoardVO read(Long bno);
-	@Delete("delete from tbl_board where bno=#{bno}")
-	public int delete (Long bno);	
+	
+	@Delete("delete from tbl_board2 where bno=#{bno}")
+	public int delete (Long bno);
+	
 	@Update
-	("update tbl_board set title=#{title},content=#{content},writer=#{writer},updateDate=sysdate where bno=#{bno}")
+	("update tbl_board2 set title=#{title},content=#{content},writer=#{writer},updateDate=sysdate where bno=#{bno}")
 	public int update(BoardVO board);
-	@Select("select count(*) from tbl_board where bno>0")
+	
+	@Select("select count(*) from tbl_board2 where bno>0")
 	public int getTotalCount(Criteria cri);
 }
